@@ -1,0 +1,68 @@
+from scipy.stats import pearsonr
+import matplotlib.pyplot as plt
+import numpy as np
+from sklearn.metrics import mean_squared_error
+
+#caso 1
+
+x = [89, 43, 36, 36, 95, 10, 66, 34, 38, 20, 26, 29, 48, 64, 6, 5, 36, 66, 72, 40]
+y = [21, 46, 3, 35, 67, 95, 53, 72, 58, 10, 26, 34, 90, 33, 38, 20, 56, 2, 47, 15]
+
+corr_coefficient, _ = pearsonr(x, y)
+corr_coefficient
+
+plt.scatter(x, y)
+plt.title('Gráfico de Dispersão')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.grid()
+plt.show()
+
+m, b = np.polyfit(x, y, 1)
+m, b
+x_value = 110
+y_value = m * x_value + b
+y_value
+
+y_pred = m * np.array(x) + b
+mse = mean_squared_error(y, y_pred)
+mse
+
+
+#caso 2
+
+
+x = np.array([32.50234527, 53.42680403, 61.53035803, 47.47563963, 59.81320787,
+              55.14218841, 52.21179669, 39.29956669, 48.10504169, 52.55001444,
+              45.41973014, 54.35163488, 44.1640495 , 58.16847072, 56.72720806,
+              48.95588857, 44.68719623, 60.29732685, 45.61864377, 38.81681754])
+y = np.array([31.70700585, 68.77759598, 62.5623823 , 71.54663223, 87.23092513,
+              78.21151827, 79.64197305, 59.17148932, 75.3312423 , 71.30087989,
+              55.16567715, 82.47884676, 62.00892325, 75.39287043, 81.43619216,
+              60.72360244, 82.89250373, 97.37989686, 48.84715332, 56.87721319])
+
+
+corr_coefficient, _ = pearsonr(x, y)
+corr_coefficient
+
+plt.scatter(x, y)
+plt.title('Gráfico de Dispersão')
+plt.xlabel('x')
+plt.ylabel('y')
+plt.grid()
+plt.show()
+
+
+m, b = np.polyfit(x, y, 1)
+
+
+m, b
+
+x_value = 95
+y_value = m * x_value + b
+y_value
+
+y_pred = m * x + b
+
+mse = mean_squared_error(y, y_pred)
+mse
